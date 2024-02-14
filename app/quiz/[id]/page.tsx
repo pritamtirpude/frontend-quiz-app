@@ -18,8 +18,9 @@ const QuestionsPage = () => {
   const [correctAnswer, setCorrectAnswer] = useState<string | null>();
   const [correctAnsHint, setCorrectAnsHint] = useState<string | null>();
   const [isNextQuestion, setIsNextQuestion] = useState<boolean>(false);
-  const [isViewScore, setIsViewScore] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
+  const [isViewScore, setIsViewScore] = useState<boolean>(false);
+  const [isLastQuestion, setIsLastQuestion] = useState<boolean>(false);
   const [emptyError, setEmptyError] = useState<boolean>(false);
 
   const subjectObj = quizzes.filter(
@@ -46,9 +47,14 @@ const QuestionsPage = () => {
   const checkIsLastQuestion = () => {
     if (quesIndex === subjectObj[0].questions.length - 1) {
       setIsNextQuestion(false);
-      setIsViewScore((prevState) => !prevState);
     } else {
       setIsNextQuestion((prevState) => !prevState);
+    }
+  };
+
+  const handleViewScoreButton = () => {
+    if (isLastQuestion) {
+      setIsViewScore((prevState) => !prevState);
     }
   };
 
@@ -74,12 +80,16 @@ const QuestionsPage = () => {
       checkIsLastQuestion();
       setIsActive(null);
     }
+
+    if (quesIndex === subjectObj[0].questions.length - 1) {
+      setIsLastQuestion((prevState) => !prevState);
+    }
   };
 
   return (
     <Fragment>
       {isViewScore ? (
-        <ViewScore />
+        <ViewScore score={score} subjectObj={subjectObj} />
       ) : (
         <div className="mt-8 flex w-full flex-col  justify-between gap-10 md:mt-12 md:flex-col md:gap-14 lg:mt-[85px] lg:flex-row lg:gap-28">
           <div className="flex size-full flex-1 flex-col justify-between lg:max-w-[465px]">
@@ -155,9 +165,10 @@ const QuestionsPage = () => {
               </div>
             ))}
 
-            {isViewScore ? (
+            {isLastQuestion ? (
               <button
                 type="button"
+                onClick={handleViewScoreButton}
                 className="rounded-2xl bg-customPurple p-4 text-xl text-light-900 lg:p-6 lg:text-2xl"
               >
                 View Score
