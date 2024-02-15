@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${rubik.variable}  bg-light-800 bg-mobile-light-pattern bg-cover  bg-center bg-no-repeat px-6 dark:bg-dark-700  dark:bg-mobile-dark-pattern md:bg-tablet-light-pattern md:px-16 md:dark:bg-tablet-dark-pattern lg:bg-desktop-light-pattern lg:px-0 lg:dark:bg-desktop-dark-pattern`}
       >
-        <main className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center">
+        <main className="mx-auto mt-6 flex min-h-screen max-w-6xl flex-col md:items-center md:justify-center lg:items-center lg:justify-center">
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <Theme />
             {children}

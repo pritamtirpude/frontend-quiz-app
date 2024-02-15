@@ -92,9 +92,9 @@ const QuestionsPage = () => {
         <ViewScore score={score} subjectObj={subjectObj} />
       ) : (
         <div className="mt-8 flex w-full flex-col  justify-between gap-10 md:mt-12 md:flex-col md:gap-14 lg:mt-[85px] lg:flex-row lg:gap-28">
-          <div className="flex size-full flex-1 flex-col justify-between lg:max-w-[465px]">
-            <div>
-              <h3 className="italic text-dark-900 dark:text-light-700">
+          <div className="flex  flex-1 flex-col">
+            <div className="size-full lg:max-h-[420px]">
+              <h3 className="flex-1 italic text-dark-900 dark:text-light-700">
                 Question&nbsp;
                 {quesIndex === subjectObj[0].questions.length
                   ? subjectObj[0].questions.length
@@ -103,15 +103,22 @@ const QuestionsPage = () => {
                 {subjectObj[0].questions.length}
               </h3>
 
-              <h4 className="mt-7 text-xl text-dark-700 dark:text-light-900 md:text-4xl lg:text-4xl">
+              <h4 className="mt-7 flex-1 text-xl text-dark-700 dark:text-light-900 md:text-4xl lg:text-4xl">
                 {subjectObj[0].questions[quesIndex]?.question}
               </h4>
             </div>
 
-            <div className="h-4 w-full rounded-full bg-light-900"></div>
+            <div className="mt-6 flex h-4 w-full  rounded-full bg-light-900 p-1 dark:bg-dark-800 md:mt-10 lg:mt-0">
+              <div
+                style={{
+                  width: `${isLastQuestion ? `${(quesIndex + 1 / 10) * 100}%` : `${(quesIndex / 10) * 100}%`}`,
+                }}
+                className="h-full rounded-full bg-customPurple "
+              ></div>
+            </div>
           </div>
 
-          <div className="relative flex size-full flex-1 flex-col gap-6">
+          <div className="flex size-full flex-1 flex-col gap-6">
             {subjectObj[0].questions[quesIndex].options.map((opt, index) => (
               <div
                 className={`flex w-full cursor-pointer items-center justify-between rounded-2xl    bg-light-900  p-3  dark:bg-dark-800 ${isActive === index ? 'border-4 border-customPurple' : correctAnswer === opt ? 'border-4 border-customGreen dark:border-customGreen' : index === incorrectIndex ? 'border-4 border-customRed' : correctAnsHint === opt ? 'border-4 border-customGreen' : 'border-4 border-transparent'}`}
@@ -121,12 +128,12 @@ const QuestionsPage = () => {
                   setIsActive(index);
                 }}
               >
-                <div className="flex w-full items-center gap-8">
+                <div className="flex w-full items-center gap-4 md:gap-8 lg:gap-8">
                   <div
-                    className={`flex size-10 items-center justify-center rounded-md  p-2  md:size-14 md:p-3 lg:size-14 lg:p-3 ${correctAnswer === opt ? 'bg-customGreen dark:bg-customGreen' : incorrectIndex === index ? 'bg-customRed' : 'bg-light-800 dark:bg-light-900'}`}
+                    className={`flex size-10  items-center justify-center rounded-md  p-2  md:size-14 md:p-3 lg:size-14 lg:p-3 ${correctAnswer === opt ? 'bg-customGreen dark:bg-customGreen' : incorrectIndex === index ? 'bg-customRed' : 'bg-light-800 dark:bg-light-900'}`}
                   >
                     <span
-                      className={`text-2xl font-bold text-dark-700 ${correctAnswer === opt ? 'text-light-900' : incorrectIndex === index ? 'text-light-900' : ''}`}
+                      className={`text-lg font-bold text-dark-700 md:text-2xl lg:text-2xl ${correctAnswer === opt ? 'text-light-900' : incorrectIndex === index ? 'text-light-900' : ''}`}
                     >
                       {index === 0
                         ? 'A'
@@ -140,7 +147,7 @@ const QuestionsPage = () => {
                     </span>
                   </div>
 
-                  <h5 className="text-lg leading-6 text-dark-700 dark:text-light-900 md:text-2xl lg:text-2xl">
+                  <h5 className="flex-1 leading-6 text-dark-700 dark:text-light-900 md:text-2xl lg:text-2xl">
                     {opt}
                   </h5>
                 </div>
@@ -192,7 +199,7 @@ const QuestionsPage = () => {
             )}
 
             {emptyError && (
-              <div className="w-full">
+              <div className="w-full flex-1">
                 <p className="">Please select an answer</p>
               </div>
             )}
