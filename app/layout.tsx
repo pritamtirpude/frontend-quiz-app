@@ -4,6 +4,7 @@ import { Rubik } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import Theme from '@/components/Theme/Theme';
+import Footer from '@/components/Footer/Footer';
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </main>
+        <Footer />
       </body>
     </html>
   );

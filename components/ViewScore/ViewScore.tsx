@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Subject } from '@/types';
 import Image from 'next/image';
+import Confetti from 'react-confetti';
 
 type ScoreProps = {
   score: number;
@@ -10,6 +11,23 @@ type ScoreProps = {
 };
 
 const ViewScore = ({ score, subjectObj }: ScoreProps) => {
+  const [dimension, setDimension] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  const detectWindowSize = () => {
+    setDimension({ width: window.innerWidth, height: window.innerHeight });
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', detectWindowSize);
+
+    return () => {
+      window.removeEventListener('resize', detectWindowSize);
+    };
+  }, [dimension]);
+
   return (
     <div className="mt-8 flex w-full flex-col justify-between gap-10 md:mt-12  md:flex-col md:gap-16 lg:mt-[85px] lg:flex-row">
       <div className="flex-1">
@@ -57,6 +75,15 @@ const ViewScore = ({ score, subjectObj }: ScoreProps) => {
           Play Again
         </button>
       </div>
+      {score >= 5 && (
+        <Confetti
+          width={dimension.width}
+          height={dimension.height}
+          className="size-full"
+          gravity={0.2}
+          initialVelocityY={5}
+        />
+      )}
     </div>
   );
 };
