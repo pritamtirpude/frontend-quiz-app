@@ -47,7 +47,7 @@ const ViewScore = ({ score, subjectObj }: ScoreProps) => {
               className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
             >
               <Image
-                src={subjectObj[0].icon}
+                src={subjectObj[0]?.icon}
                 alt={subjectObj[0].title}
                 width={32}
                 height={32}
