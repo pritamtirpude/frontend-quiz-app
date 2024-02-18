@@ -50,11 +50,11 @@ const QuestionWizard = ({
         <div className="size-full lg:max-h-[420px]">
           <h3 className="flex-1 italic text-dark-900 dark:text-light-700">
             Question&nbsp;
-            {quesIndex === subjectObj[0].questions.length
-              ? subjectObj[0].questions.length
+            {quesIndex === subjectObj[0]?.questions?.length
+              ? subjectObj[0]?.questions?.length
               : quesIndex + 1}
             &nbsp;of&nbsp;
-            {subjectObj[0].questions.length}
+            {subjectObj[0]?.questions?.length}
           </h3>
 
           <AnimatePresence mode="wait" initial={false}>
@@ -66,7 +66,7 @@ const QuestionWizard = ({
               exit="exit"
               className="mt-7 w-full flex-1 text-xl text-dark-700 dark:text-light-900 md:text-4xl lg:text-4xl"
             >
-              {subjectObj[0].questions[quesIndex]?.question}
+              {subjectObj[0]?.questions[quesIndex]?.question}
             </motion.h4>
           </AnimatePresence>
         </div>
@@ -106,7 +106,7 @@ const QuestionWizard = ({
             </motion.div>
           )}
         </AnimatePresence>
-        {subjectObj[0].questions[quesIndex].options.map((opt, index) => (
+        {subjectObj[0]?.questions[quesIndex]?.options?.map((opt, index) => (
           <div
             className={`flex w-full cursor-pointer items-center justify-between rounded-2xl bg-light-900 p-3    transition-all  hover:border-customPurple  dark:bg-dark-800 ${isActive === index ? 'border-4 border-customPurple' : correctAnswer === opt ? 'border-4 border-customGreen dark:border-customGreen' : index === incorrectIndex ? 'border-4 border-customRed' : correctAnsHint === opt ? 'border-4 border-customGreen' : 'border-4 border-transparent'}`}
             key={opt}

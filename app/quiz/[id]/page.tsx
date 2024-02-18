@@ -22,7 +22,7 @@ const QuestionsPage = () => {
   const [emptyError, setEmptyError] = useState<boolean>(false);
 
   const subjectObj = quizzes.filter(
-    (ques) => ques.title === pathname.split('/').pop(),
+    (ques) => ques?.title === pathname.split('/').pop(),
   );
 
   const hanldeNextQuestions = () => {
@@ -35,15 +35,15 @@ const QuestionsPage = () => {
 
     setQuesIndex((prevState) => {
       if (prevState === subjectObj[0].questions.length - 1) {
-        return subjectObj[0].questions.length - 1;
+        return subjectObj[0]?.questions?.length - 1;
       }
 
-      return prevState + subjectObj[0].questions.length * 0 + 1;
+      return prevState + subjectObj[0]?.questions?.length * 0 + 1;
     });
   };
 
   const checkIsLastQuestion = () => {
-    if (quesIndex === subjectObj[0].questions.length - 1) {
+    if (quesIndex === subjectObj[0]?.questions?.length - 1) {
       setIsNextQuestion(false);
     } else {
       setIsNextQuestion((prevState) => !prevState);
@@ -57,7 +57,7 @@ const QuestionsPage = () => {
   };
 
   const handleAnswer = () => {
-    const correctAns = subjectObj[0].questions[quesIndex].answer;
+    const correctAns = subjectObj[0]?.questions[quesIndex]?.answer;
 
     if (!answer) {
       setEmptyError((prevState) => !prevState);
@@ -79,7 +79,7 @@ const QuestionsPage = () => {
       setIsActive(null);
     }
 
-    if (quesIndex === subjectObj[0].questions.length - 1) {
+    if (quesIndex === subjectObj[0]?.questions?.length - 1) {
       setIsLastQuestion((prevState) => !prevState);
     }
   };

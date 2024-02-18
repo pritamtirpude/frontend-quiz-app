@@ -20,7 +20,7 @@ const Theme = () => {
   };
 
   const subject = quizzes.filter(
-    (ques) => ques.title === pathname.split('/').pop(),
+    (ques) => ques?.title === pathname.split('/').pop(),
   );
 
   return (
@@ -34,8 +34,8 @@ const Theme = () => {
             className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
           >
             <Image
-              src={subject[0].icon}
-              alt={subject[0].title}
+              src={subject[0]?.icon}
+              alt={subject[0]?.title}
               width={32}
               height={32}
               className="rounded-md"

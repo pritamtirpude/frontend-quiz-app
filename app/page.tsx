@@ -1,5 +1,3 @@
-'use server';
-
 import { quizzes } from '@/data';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,15 +21,15 @@ const HomePage = () => {
 
       <div className="mt-10 flex w-full flex-col gap-6 md:mt-16 lg:mt-0">
         {quizzes.map((quiz) => (
-          <Link key={quiz.title} href={`/quiz/${quiz.title}`}>
+          <Link key={quiz?.title} href={`/quiz/${quiz?.title}`}>
             <div className="flex w-full cursor-pointer items-center gap-8 rounded-2xl bg-light-900 p-5 drop-shadow-xl dark:bg-dark-800">
               <div
                 style={{ backgroundColor: `${quiz?.bgIconColor}` }}
                 className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
               >
                 <Image
-                  src={quiz.icon}
-                  alt={quiz.title}
+                  src={quiz?.icon}
+                  alt={quiz?.title}
                   width={32}
                   height={32}
                   className="rounded-md"
@@ -39,7 +37,7 @@ const HomePage = () => {
               </div>
 
               <h2 className="text-lg  text-dark-700 dark:text-light-900 lg:text-[28px]">
-                {quiz.title}
+                {quiz?.title}
               </h2>
             </div>
           </Link>
