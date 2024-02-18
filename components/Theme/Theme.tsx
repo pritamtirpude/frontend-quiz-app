@@ -30,7 +30,7 @@ const Theme = () => {
       {pathname !== '/' && (
         <div className="flex items-center gap-6">
           <div
-            style={{ backgroundColor: `${subject[0].bgIconColor}` }}
+            style={{ backgroundColor: `${subject[0]?.bgIconColor}` }}
             className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
           >
             <Image

@@ -43,7 +43,7 @@ const ViewScore = ({ score, subjectObj }: ScoreProps) => {
         <div className="flex flex-col items-center rounded-3xl bg-light-900 p-8 dark:bg-dark-800 md:p-12 lg:p-12">
           <div className="flex items-center gap-6">
             <div
-              style={{ backgroundColor: `${subjectObj[0].bgIconColor}` }}
+              style={{ backgroundColor: `${subjectObj[0]?.bgIconColor}` }}
               className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
             >
               <Image

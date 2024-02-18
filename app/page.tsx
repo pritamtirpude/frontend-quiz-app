@@ -24,7 +24,7 @@ const HomePage = () => {
           <Link key={quiz.title} href={`/quiz/${quiz.title}`}>
             <div className="flex w-full cursor-pointer items-center gap-8 rounded-2xl bg-light-900 p-5 drop-shadow-xl dark:bg-dark-800">
               <div
-                style={{ backgroundColor: `${quiz.bgIconColor}` }}
+                style={{ backgroundColor: `${quiz?.bgIconColor}` }}
                 className={`flex size-10 items-center justify-center rounded-md p-2 lg:size-14`}
               >
                 <Image

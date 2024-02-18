@@ -9,6 +9,6 @@ type Questions = {
 export type Subject = {
   title: string;
   icon: string;
-  bgIconColor: string | undefined;
+  bgIconColor: string;
   questions: Questions;
 }[];
